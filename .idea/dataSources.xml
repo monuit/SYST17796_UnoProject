@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="SYST17796_UnoProject.vpp" uuid="0109efdc-2e5c-4447-9145-d9c20d16c626">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Owner\SYST17796_UnoProject\vpproject\SYST17796_UnoProject.vpp.bak_000f</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="SYST17796_UnoProject" uuid="7152ed83-5a5a-455f-b78f-b82f2e6b2de6">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Owner\Java\SYST17796_UnoProject\vpproject\SYST17796_UnoProject.vpp~1</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="SYST17796_UnoProject.vpp [2]" uuid="5c9fbacf-a6ed-4997-b9f1-63a7d9e26476">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Owner\Java\SYST17796_UnoProject\vpproject\SYST17796_UnoProject.vpp.bak_000f</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
