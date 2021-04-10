@@ -191,4 +191,41 @@ public class GameLogic {
 		System.out.println("That card can't be played here! Pick a new card!");
 		return false;
 	}
+	// Asks the user to pick a card from their hand, draw a card, or quit the game.
+	private int askForUserInput() throws IOException {
+		System.out.println("\nIt is your turn\n" + userPlayer);
+		System.out.println("***\n" +
+				"The center card is: " + centerCardAffected +"\n***");
+		if (centerCardAffected instanceof WildCard || centerCardAffected instanceof DrawFour) {
+			System.out.println("The color is " + centerCardAffected.getColorOfCard());
+		}
+		System.out.println("Which card will you play?\n" +
+				"Type number next to the card to play that card.\n" +
+				"Type \"-1\" to draw a card.\n" +
+				"Or type \"-2\" to quit the game");
+
+		int indexOfCardInHand = 0;
+
+		if (userInput.ready()) {
+			indexOfCardInHand = Integer.parseInt(userInput.readLine());
+		} else {
+			System.out.println("Game Ended - Idle");
+			userInput.close();
+			System.exit(0);
+		}
+		System.out.println("Input: "+indexOfCardInHand);
+		if(indexOfCardInHand <= userPlayer.getSize() && indexOfCardInHand > 0)
+		{
+			return indexOfCardInHand - 1;
+		}
+		else if (indexOfCardInHand == -1) {
+			return -1;
+		}
+		else if (indexOfCardInHand == -2) {
+			return -2;
+		}
+		//If that number was out of bounds ask for another input
+		System.out.println("That was not a valid choice. You don't have a card at " + indexOfCardInHand);
+		return askForUserInput();
+	}
 }
