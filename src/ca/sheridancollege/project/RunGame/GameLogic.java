@@ -170,5 +170,25 @@ public class GameLogic {
 
 			}
 	}
-
+	// Checks if the card chosen can be played this turn.
+	private boolean validUserInput(Hand player, int choice)
+	{
+		//Conditions to check for
+		boolean sameNum = (player.getCard(choice).getNumberOfCard() == centerCardAffected.getNumberOfCard()) &&
+				(centerCardAffected.getNumberOfCard() != 0);
+		boolean sameColor = (player.getCard(choice).getColorOfCard().equalsIgnoreCase(centerCardAffected.getColorOfCard())) &&
+				!(centerCardAffected.getColorOfCard().equals("none")) ;
+		boolean wild = (player.getCard(choice) instanceof WildCard) || (player.getCard(choice) instanceof DrawFour);
+		//DrawTwo or Skip or Reverse - Different Color
+		boolean sameType = (player.getCard(choice) instanceof DrawTwo && centerCardAffected instanceof DrawTwo) ||
+				(player.getCard(choice) instanceof Skip && centerCardAffected instanceof Skip) ||
+				(player.getCard(choice) instanceof Reverse && centerCardAffected instanceof Reverse);
+		if(sameNum || sameColor || wild || sameType)
+		{
+			return true;
+		}
+		//If this card couldn't be played ask for new input
+		System.out.println("That card can't be played here! Pick a new card!");
+		return false;
+	}
 }
