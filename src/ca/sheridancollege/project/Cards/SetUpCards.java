@@ -4,9 +4,11 @@
  * @date March 28, 2021
  */
 
-package Cards;
+package ca.sheridancollege.project.Cards;
 
-import RunGame.GameLogic;
+
+import ca.sheridancollege.project.RunGame.GameLogic;
+
 
 public class SetUpCards extends GameLogic {
     /**
@@ -15,5 +17,6 @@ public class SetUpCards extends GameLogic {
      */
     private void setupGame()
     {
+        
     }
 }

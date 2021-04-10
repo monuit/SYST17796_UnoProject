@@ -4,9 +4,9 @@
  * @date March 28, 2021
  */
 
-package Colors;
+package ca.sheridancollege.project.Colors;
 
-import RunGame.GameLogic;
+import ca.sheridancollege.project.RunGame.GameLogic;
 
 public class RandomColours extends GameLogic {
     public enum Color {BLUE, GREEN, NONE, RED, YELLOW}

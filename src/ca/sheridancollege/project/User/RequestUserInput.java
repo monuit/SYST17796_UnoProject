@@ -4,9 +4,9 @@
  * @date March 28, 2021
  */
 
-package User;
+package ca.sheridancollege.project.User;
 
-import RunGame.GameLogic;
+import ca.sheridancollege.project.RunGame.GameLogic;
 
 import java.io.IOException;
 

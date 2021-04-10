@@ -4,7 +4,7 @@
  * @date March 28, 2021
  */
 
-package RunGame;
+package ca.sheridancollege.project.RunGame;
 
 public class RunUNOGame {
 

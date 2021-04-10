@@ -4,13 +4,13 @@
  * @date March 28, 2021
  */
 
-package RunGame;
+package ca.sheridancollege.project.RunGame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import CardHolds.Deck;
-import CardHolds.Hand;
-import Cards.*;
+import ca.sheridancollege.project.CardHolds.Deck;
+import ca.sheridancollege.project.CardHolds.Hand;
+import ca.sheridancollege.project.Cards.*;
 
 /**
  * This class will run the game of UNO
@@ -122,15 +122,15 @@ public class GameLogic {
 	public GameLogic()
 	{
 		deck1 = new Deck();
-		comp1 = new Hand("Computer 1");
-		comp2 = new Hand("Computer 2");
-		comp3 = new Hand("Computer 3");
-		user = new Hand("The user");
-		//input = new Scanner(System.in);
-		userInput = new BufferedReader(new InputStreamReader(System.in));
-		
-		new SetUpCards();
-		runGame();
+//		comp1 = new Hand("Computer 1");
+//		comp2 = new Hand("Computer 2");
+//		comp3 = new Hand("Computer 3");
+//		user = new Hand("The user");
+//		//input = new Scanner(System.in);
+//		userInput = new BufferedReader(new InputStreamReader(System.in));
+//		
+//		new SetUpCards();
+//		runGame();
 	}
 
 	/**This will print if someone wins. It will get the game started with user playing first.*/

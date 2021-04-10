@@ -4,7 +4,7 @@
  * @date March 28, 2021
  */
 
-package RunGame;
+package ca.sheridancollege.project.RunGame;
 
 public class CheckTheNextPlayer extends GameLogic {
     /**Checks all conditions to see whose turn is next.*/

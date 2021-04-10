@@ -4,7 +4,7 @@
  * @date March 28, 2021
  */
 
-package Cards;
+package ca.sheridancollege.project.Cards;
 
 public class WildCard extends Card{
 

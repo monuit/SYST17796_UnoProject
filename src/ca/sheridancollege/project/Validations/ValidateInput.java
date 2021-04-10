@@ -4,10 +4,10 @@
  * @date March 28, 2021
  */
 
-package Validations;
+package ca.sheridancollege.project.Validations;
 
-import CardHolds.Hand;
-import RunGame.GameLogic;
+import ca.sheridancollege.project.CardHolds.Hand;
+import ca.sheridancollege.project.RunGame.GameLogic;
 
 
 public class ValidateInput extends GameLogic {

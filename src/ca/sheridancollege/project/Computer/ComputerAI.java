@@ -4,10 +4,10 @@
  * @date March 28, 2021
  */
 
-package Computer;
+package ca.sheridancollege.project.Computer;
 
-import CardHolds.Hand;
-import RunGame.GameLogic;
+import ca.sheridancollege.project.CardHolds.Hand;
+import ca.sheridancollege.project.RunGame.GameLogic;
 
 public class ComputerAI extends GameLogic {
     /**Decides for each computer what card would best be played here and plays it*/

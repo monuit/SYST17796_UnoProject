@@ -4,9 +4,9 @@
  * @date March 28, 2021
  */
 
-package CardHolds;
+package ca.sheridancollege.project.CardHolds;
 import java.util.ArrayList;
-import Cards.Card;
+import ca.sheridancollege.project.Cards.Card;
 
 public class Hand {
 	
@@ -32,6 +32,7 @@ public class Hand {
 	/**
 	 * Shows the card at that index in your hand without removing it
 	 */
+        
 	public Card getCard(int index)
 	{
 		return HandArray.get(index);
@@ -42,7 +43,9 @@ public class Hand {
 	 */
 	public void addToHand(Card q)
 	{
+            
 		HandArray.add(q);
+            
 	}
 	
 	/**
@@ -61,6 +64,7 @@ public class Hand {
 	/**
 	 * Prints what your hand contains at that time
 	 */
+        @Override
 	public String toString() {
 		return null;
 	}
