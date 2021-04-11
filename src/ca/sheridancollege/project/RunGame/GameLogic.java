@@ -437,4 +437,17 @@ public class GameLogic {
 			centerCardAffected.setUsed();
 		}
 	}
+	/**Picks a color randomly to set centercard to*/
+	private void randomColor() throws IllegalStateException {
+
+		String bestColor = switch ((int) (Math.random() * 4) + 1) {
+			case 1 -> "Blue";
+			case 2 -> "Red";
+			case 3 -> "Green";
+			case 4 -> "Yellow";
+			default -> throw new IllegalStateException("Unexpected value: " + (int) (Math.random() * 4) + 1);
+		};
+
+		centerCardAffected.setColorOfCard(bestColor);
+	}
 }
