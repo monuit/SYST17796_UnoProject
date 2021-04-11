@@ -6,20 +6,18 @@
  * Sheena Manuel
  * @date April 10, 2021
  */
-package ca.sheridancollege.project.CardHolds;
 
+package CardHolds;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.*;
 
-import ca.sheridancollege.project.Cards.Card;
-import ca.sheridancollege.project.Cards.Card.Order;
-import ca.sheridancollege.project.Cards.NumberCard;
-import ca.sheridancollege.project.Cards.DrawTwo;
-import ca.sheridancollege.project.Cards.Reverse;
-import ca.sheridancollege.project.Cards.Skip;
-import ca.sheridancollege.project.Cards.WildCard;
-import ca.sheridancollege.project.Cards.DrawFour;
+import Cards.Card;
+import Cards.DrawFour;
+import Cards.DrawTwo;
+import Cards.NumberCard;
+import Cards.Reverse;
+import Cards.Skip;
+import Cards.WildCard;
 
 public class Deck {
 
@@ -38,11 +36,11 @@ public class Deck {
         if (deck.size() < 1) {
             buildDeck(); // If no cards left refill the deck
         }
-        Random num = new Random();
-        int drawn = num.nextInt(deck.size());//Picks integer up to one less than deck size
-        Card temp = deck.get(drawn);//Saves card to temporary card at that generated index
+        Random number = new Random();
+        int drawn = number.nextInt(deck.size());//Picks integer up to one less than deck size
+        Card temporary = deck.get(drawn);//Saves card to temporary card at that generated index
         deck.remove(drawn);//Removes card from deck
-        return temp;
+        return temporary;
     }
 
     /**

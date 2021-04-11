@@ -4,7 +4,7 @@
  * @date March 28, 2021
  */
 
-package ca.sheridancollege.project.Cards;
+package Cards;
 
 public class WildCard extends Card{
 
@@ -12,7 +12,7 @@ public class WildCard extends Card{
 	{
 		super();
 	}
-	
+
 	public String toString()
 	{
 		return "A wild card";

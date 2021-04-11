@@ -3,18 +3,19 @@
  *
  * @author Mohammad Abdulhussain
  * @date March 28, 2021
+ *
  */
 
-package ca.sheridancollege.project.RunGame;
-
+package RunGame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-import ca.sheridancollege.project.CardHolds.Deck;
-import ca.sheridancollege.project.CardHolds.Hand;
-import ca.sheridancollege.project.Cards.*;
+import CardHolds.Deck;
+import CardHolds.Hand;
+import Cards.*;
+
 
 public class GameLogic {
 
@@ -67,14 +68,14 @@ public class GameLogic {
 	private void userTurnToPlay() throws IOException {
 		if (centerCardAffected instanceof DrawFour && !centerCardAffected.getUsed()) {
 			for (int i = 0; i < 4; i++) {
-				userPlayer.addToHand(firstDeck.drawRandomCard());
+				userPlayer.addToHand(firstDeck.drawCard());
 			}
 			centerCardAffected.setUsed();
 			System.out.println("Next player drew 4 cards");
 		}
 		if (centerCardAffected instanceof DrawTwo && !centerCardAffected.getUsed()) {
 			for (int i = 0; i < 2; i++) {
-				userPlayer.addToHand(firstDeck.drawRandomCard());
+				userPlayer.addToHand(firstDeck.drawCard());
 			}
 			centerCardAffected.setUsed();
 			System.out.println("Next player drew 2 cards");
@@ -87,7 +88,7 @@ public class GameLogic {
 		}
 
 		if (choiceOfCardUserPicked == -1) { //User wants to draw a card from the deck which is random
-			userPlayer.addToHand(firstDeck.drawRandomCard());
+			userPlayer.addToHand(firstDeck.drawCard());
 			System.out.println("You drew a card!");
 			nextPlayer = checkNextPlayer();
 			computersPlay();
@@ -296,7 +297,7 @@ public class GameLogic {
 	private boolean checkForWinner(Hand player)
 	{
 		if (player.getSize() == 1) {
-			System.out.println(player.getNameofOwner() + " has UNO!");
+			System.out.println(player.getName() + " has UNO!");
 		}
 
 		return player.getSize() == 0;
@@ -306,20 +307,20 @@ public class GameLogic {
 	{
 		if (centerCardAffected instanceof DrawFour && !centerCardAffected.getUsed()) {
 			for (int i = 0; i < 4; i++) {
-				player.addToHand(firstDeck.drawRandomCard());
+				player.addToHand(firstDeck.drawCard());
 			}
 			centerCardAffected.setUsed();
 			System.out.println("Next player drew 4 cards");
 		}
 		if (centerCardAffected instanceof DrawTwo && !centerCardAffected.getUsed()) {
 			for (int i = 0; i < 2; i++) {
-				player.addToHand(firstDeck.drawRandomCard());
+				player.addToHand(firstDeck.drawCard());
 			}
 			centerCardAffected.setUsed();
 			System.out.println("Next player drew 2 cards");
 		}
 
-		System.out.println("\n"+"It is " + player.getNameofOwner() + "'s turn!");
+		System.out.println("\n"+"It is " + player.getName() + "'s turn!");
 		/*
 		 * Play any special cards
 		 * Try to play a number card
@@ -395,8 +396,8 @@ public class GameLogic {
 			//Nothing can be played so draw a card
 			if(!cardPicked)
 			{
-				player.addToHand(firstDeck.drawRandomCard());
-				System.out.println(player.getNameofOwner() + " drew a card!");
+				player.addToHand(firstDeck.drawCard());
+				System.out.println(player.getName() + " drew a card!");
 			}
 		}
 		//Actually play the card
@@ -404,7 +405,7 @@ public class GameLogic {
 		{
 			centerCardAffected = player.getCard(bestIndexOfComputerCard);
 			player.removeFromHand(bestIndexOfComputerCard);
-			System.out.println(player.getNameofOwner() + " played " + centerCardAffected);
+			System.out.println(player.getName() + " played " + centerCardAffected);
 			if (centerCardAffected instanceof Skip && !centerCardAffected.getUsed()) {
 				nextPlayer = checkNextPlayer();
 				centerCardAffected.setUsed();
@@ -427,7 +428,7 @@ public class GameLogic {
 	{
 		drawHand(userPlayer, firstDeck);
 		drawHand(computerOne, firstDeck);
-		centerCardAffected = firstDeck.drawRandomCard();
+		centerCardAffected = firstDeck.drawCard();
 		if (centerCardAffected instanceof WildCard || centerCardAffected instanceof DrawFour) {
 			randomColor();
 			centerCardAffected.setUsed();
@@ -459,7 +460,7 @@ public class GameLogic {
 	{
 		for(int i = 0; i < 7; i++)
 		{
-			x.addToHand(y.drawRandomCard());
+			x.addToHand(y.drawCard());
 		}
 	}
 }

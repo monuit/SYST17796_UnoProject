@@ -6,14 +6,15 @@
 
 package CardHolds;
 import java.util.ArrayList;
-import ca.sheridancollege.project.Cards.Card;
+import Cards.Card;
+
 
 public class Hand {
 	
 	private String name;
 	
 	private ArrayList<Card> HandArray;
-	
+
 	/**
 	 * This is a hand
 	 */
@@ -73,11 +74,11 @@ public class Hand {
 				{
 					if(counter == HandArray.size())
 					{
-						returned.append("[").append(counter).append("]").append(x);
+						returned.append("[").append(counter).append("]").append(Card);
 					}
 					else
 					{
-						returned.append("[").append(counter).append("]").append(x).append("\n");
+						returned.append("[").append(counter).append("]").append(Card).append("\n");
 						counter++;
 					}
 				}

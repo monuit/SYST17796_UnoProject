@@ -4,7 +4,7 @@
  * @date March 28, 2021
  */
 
-package ca.sheridancollege.project.Cards;
+package Cards;
 
 public class Reverse extends Card{
 
@@ -12,9 +12,9 @@ public class Reverse extends Card{
 	{
 		super(color);
 	}
-	
+
 	public String toString()
 	{
-		return "A " + super.getColor() + " Reverse card";
+		return "A " + super.getColorOfCard() + " Reverse card";
 	}
 }

@@ -4,28 +4,28 @@
  * @date March 28, 2021
  */
 
-package ca.sheridancollege.project.Cards;
+package Cards;
 
 public class NumberCard extends Card{
-	
-	private int number;
-	
+
+	private int numberOfCard;
+
 	public NumberCard(int number, String color)
 	{
 		super(color);
-		this.number = number;
+		this.numberOfCard = number;
 	}
-	
+
 	/**
 	 * Gets the number on this card
 	 */
-	public int getNumber()
+	public int getNumberOfCard()
 	{
-		return number;
+		return numberOfCard;
 	}
-	
+
 	public String toString()
 	{
-		return "A " + super.getColor() + " " + number;
+		return "A " + super.getColorOfCard() + " " + numberOfCard;
 	}
 }
