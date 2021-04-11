@@ -24,12 +24,10 @@ import ca.sheridancollege.project.Cards.DrawFour;
 public class Deck {
 
     private ArrayList<Card> deck;
-    //private int cardsInDeck;
 
     public Deck() {
         deck = new ArrayList<Card>();
         buildDeck();
-        printDeck();
     }
 
     /**
@@ -41,7 +39,7 @@ public class Deck {
             buildDeck(); // If no cards left refill the deck
         }
         Random num = new Random();
-        int drawn = num.nextInt(deck.size()) - 1;//Picks integer up to one less than deck size
+        int drawn = num.nextInt(deck.size());//Picks integer up to one less than deck size
         Card temp = deck.get(drawn);//Saves card to temporary card at that generated index
         deck.remove(drawn);//Removes card from deck
         return temp;
@@ -51,7 +49,8 @@ public class Deck {
      * Prints all cards available in deck at that time
      */
     public void printDeck() {
-        for (Card card : deck) {
+        for (Card card : deck)
+        {
             System.out.println(card);
         }
     }
@@ -60,38 +59,67 @@ public class Deck {
      * Generates all cards needed for a full deck
      */
     public void buildDeck() {
-        int[] numbers = {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9};
-        String[] colors = {"red", "yellow", "green", "blue"};
-
-        // Number Cards
-        for (int number : numbers) {
-            for (String color : colors) {
-                NumberCard nCard = new NumberCard(number, color);
-                this.deck.add(nCard);
-            }
+        //Two cards of 0 - 9 for every color
+        for(int i = 0; i < 10; i++)
+        {
+            deck.add(new NumberCard(i,"Green"));
+            deck.add(new NumberCard(i,"Green"));
         }
-
-        // Action Cards
-        for (int i = 0; i <= 1; i++) {
-            for (String color : colors) {
-                DrawTwo d2Card = new DrawTwo(color);
-                Reverse reverseCard = new Reverse(color);
-                Skip skipCard = new Skip(color);
-
-                this.deck.add(d2Card);
-                this.deck.add(reverseCard);
-                this.deck.add(skipCard);
-            }
+        for(int i = 0; i < 10; i++)
+        {
+            deck.add(new NumberCard(i,"Blue"));
+            deck.add(new NumberCard(i,"Blue"));
         }
-
-        // Wild Cards
-        for (int i = 0; i <= 3; i++) {
-            DrawFour d4Card = new DrawFour();
-            WildCard wildCard = new WildCard();
-
-            this.deck.add(d4Card);
-            this.deck.add(wildCard);
+        for(int i = 0; i < 10; i++)
+        {
+            deck.add(new NumberCard(i,"Yellow"));
+            deck.add(new NumberCard(i,"Yellow"));
+        }
+        for(int i = 0; i < 10; i++)
+        {
+            deck.add(new NumberCard(i,"Red"));
+            deck.add(new NumberCard(i,"Red"));
+        }
+        //Two Draw Two cards; two Skip cards; and two Reverse cards.
+        for (int i = 0; i < 2; i++) {
+            deck.add(new DrawTwo("Green"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new DrawTwo("Blue"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new DrawTwo("Yellow"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new DrawTwo("Red"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new Reverse("Yellow"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new Reverse("Green"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new Reverse("Blue"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new Skip("Green"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new Skip("Red"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new Skip("Yellow"));
+        }
+        for (int i = 0; i < 2; i++) {
+            deck.add(new Skip("Blue"));
+        }
+        //In addition there are four Wild cards and four Wild Draw Four cards.
+        for (int i = 0; i < 4; i++) {
+            deck.add(new WildCard());
+        }
+        for (int i = 0; i < 4; i++) {
+            deck.add(new DrawFour());
         }
     }
-
 }
