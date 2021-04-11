@@ -51,8 +51,7 @@ public class Deck {
      * Prints all cards available in deck at that time
      */
     public void printDeck() {
-        System.out.println("Total Cards:" + this.deck.size());
-        for (Card card : this.deck) {
+        for (Card card : deck) {
             System.out.println(card);
         }
     }
