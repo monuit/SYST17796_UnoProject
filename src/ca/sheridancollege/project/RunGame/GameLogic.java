@@ -292,5 +292,13 @@ public class GameLogic {
 		}
 
 	}
+	/**Checks if any player has won or if they have UNO*/
+	private boolean checkForWinner(Hand player)
+	{
+		if (player.getSize() == 1) {
+			System.out.println(player.getNameofOwner() + " has UNO!");
+		}
 
+		return player.getSize() == 0;
+	}
 }
