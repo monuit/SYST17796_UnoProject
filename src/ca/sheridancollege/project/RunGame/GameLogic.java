@@ -450,4 +450,16 @@ public class GameLogic {
 
 		centerCardAffected.setColorOfCard(bestColor);
 	}
+	/**
+	 * Draws a 7 card hand
+	 * @param x user who gets the cards
+	 * @param y deck the cards are drawn from
+	 */
+	private void drawHand(Hand x, Deck y)
+	{
+		for(int i = 0; i < 7; i++)
+		{
+			x.addToHand(y.drawRandomCard());
+		}
+	}
 }
