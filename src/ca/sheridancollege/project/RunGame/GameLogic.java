@@ -268,4 +268,29 @@ public class GameLogic {
 
 	}
 
+	/**Checks all conditions to see whose turn is next.*/
+	private int checkNextPlayer()
+	{
+		if(this.nextPlayer == 1 && !clockWiseDirection)
+		{
+			return 2;
+		}
+		else if(this.nextPlayer == 2 && clockWiseDirection)
+		{
+			return 1;
+		}
+		else
+		{
+			if(clockWiseDirection)
+			{
+				return this.nextPlayer +1;
+			}
+			else
+			{
+				return this.nextPlayer -1;
+			}
+		}
+
+	}
+
 }
