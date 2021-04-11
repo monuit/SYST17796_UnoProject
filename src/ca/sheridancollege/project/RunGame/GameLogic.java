@@ -419,5 +419,22 @@ public class GameLogic {
 			}
 		}
 	}
-
+	/**
+	 * Draws all of the player's hands
+	 * Picks the starting center card
+	 */
+	private void SetUpTheGame()
+	{
+		drawHand(userPlayer, firstDeck);
+		drawHand(computerOne, firstDeck);
+		centerCardAffected = firstDeck.drawRandomCard();
+		if (centerCardAffected instanceof WildCard || centerCardAffected instanceof DrawFour) {
+			randomColor();
+			centerCardAffected.setUsed();
+			System.out.println("The color is " + centerCardAffected.getColorOfCard());
+		}
+		if (centerCardAffected instanceof DrawTwo) {
+			centerCardAffected.setUsed();
+		}
+	}
 }
