@@ -228,4 +228,44 @@ public class GameLogic {
 		System.out.println("That was not a valid choice. You don't have a card at " + indexOfCardInHand);
 		return askForUserInput();
 	}
+	/**Lets the computers play and checks if any of them win. Keeps track of which computer won*/
+	private void computersPlay()
+	{
+		String compPlaying = null; //This is the computer playing at that moment
+		//Chooses who gets to play next
+		if(nextPlayer == 2)
+		{
+			compPlaying = "Computer One";
+			ComputerLogic(computerOne);
+			hasAnyPlayerWon = checkForWinner(computerOne);
+		}
+		//If we have no winner check if a computer or player is next else declare the winner
+		if(!hasAnyPlayerWon)
+		{
+			nextPlayer = checkNextPlayer();
+			switch (nextPlayer) {
+				case 1:
+					try {
+						userTurnToPlay();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					break;
+				default:
+					computersPlay();
+					break;
+			}
+		}
+		else
+		{
+			try {
+				userInput.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			winnerOfGame = compPlaying;
+		}
+
+	}
+
 }
