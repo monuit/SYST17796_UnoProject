@@ -301,4 +301,123 @@ public class GameLogic {
 
 		return player.getSize() == 0;
 	}
+	/**Decides for each computer what card would best be played here and plays it*/
+	private void ComputerLogic(Hand player)
+	{
+		if (centerCardAffected instanceof DrawFour && !centerCardAffected.getUsed()) {
+			for (int i = 0; i < 4; i++) {
+				player.addToHand(firstDeck.drawRandomCard());
+			}
+			centerCardAffected.setUsed();
+			System.out.println("Next player drew 4 cards");
+		}
+		if (centerCardAffected instanceof DrawTwo && !centerCardAffected.getUsed()) {
+			for (int i = 0; i < 2; i++) {
+				player.addToHand(firstDeck.drawRandomCard());
+			}
+			centerCardAffected.setUsed();
+			System.out.println("Next player drew 2 cards");
+		}
+
+		System.out.println("\n"+"It is " + player.getNameofOwner() + "'s turn!");
+		/*
+		 * Play any special cards
+		 * Try to play a number card
+		 * Wild card
+		 * Draw
+		 */
+		boolean cardPicked = false; //Sees if a card can be played
+		int bestIndexOfComputerCard = 0; //The card we will play
+		String bestColorOfComputerCard = "Blue";
+
+		//Start off picking the best number card
+		for(int i = 0; i < player.getSize(); i++)
+		{
+			if (player.getCard(i).getColorOfCard().equalsIgnoreCase(centerCardAffected.getColorOfCard())
+					&& !player.getCard(i).getColorOfCard().equals("none")) {
+				//Pick the card with the biggest number
+				if (!cardPicked || player.getCard(i).getNumberOfCard() < centerCardAffected.getNumberOfCard()) {
+					bestIndexOfComputerCard = i;
+					cardPicked = true;
+				}
+			} else if (player.getCard(i).getNumberOfCard() ==
+					centerCardAffected.getNumberOfCard() && player.getCard(i).getNumberOfCard() != 0) {
+				//Pick the card with the biggest number
+				if (!cardPicked || player.getCard(i).getNumberOfCard() < centerCardAffected.getNumberOfCard()) {
+					bestIndexOfComputerCard = i;
+					cardPicked = true;
+				}
+			}
+		}
+		//Go through and see if there is a better choice which is a special card
+		for(int i = 0; i < player.getSize(); i++)
+		{
+			if (player.getCard(i) instanceof DrawTwo) {
+				if (player.getCard(i).getColorOfCard().equalsIgnoreCase(centerCardAffected.getColorOfCard())) {
+					bestIndexOfComputerCard = i;
+					cardPicked = true;
+				}
+			} else if (player.getCard(i) instanceof Skip || player.getCard(i) instanceof Reverse) {
+				if (player.getCard(i).getColorOfCard().equalsIgnoreCase(centerCardAffected.getColorOfCard())) {
+					bestIndexOfComputerCard = i;
+					cardPicked = true;
+				}
+			}
+		}
+		/*
+		 * Check if a card got picked
+		 * If one wasn't then check for wild cards
+		 * Else draw a card
+		 */
+		if(!cardPicked)
+		{
+			//Check for wild card
+			for(int i = 0; i < player.getSize(); i++)
+			{
+				if(player.getCard(i) instanceof WildCard || player.getCard(i) instanceof DrawFour)
+				{
+					bestIndexOfComputerCard = i;
+					cardPicked = true;
+					if ((int) (Math.random() * 4) + 1 == 1) {
+						bestColorOfComputerCard = "Blue";
+					}
+					if ((int) (Math.random() * 4) + 1 == 2) {
+						bestColorOfComputerCard = "Yellow";
+					}
+					if ((int) (Math.random() * 4) + 1 == 3) {
+						bestColorOfComputerCard = "Green";
+					}
+					if ((int) (Math.random() * 4) + 1 == 4) {
+						bestColorOfComputerCard = "Red";
+					}
+				}
+			}
+			//Nothing can be played so draw a card
+			if(!cardPicked)
+			{
+				player.addToHand(firstDeck.drawRandomCard());
+				System.out.println(player.getNameofOwner() + " drew a card!");
+			}
+		}
+		//Actually play the card
+		if(cardPicked)
+		{
+			centerCardAffected = player.getCard(bestIndexOfComputerCard);
+			player.removeFromHand(bestIndexOfComputerCard);
+			System.out.println(player.getNameofOwner() + " played " + centerCardAffected);
+			if (centerCardAffected instanceof Skip && !centerCardAffected.getUsed()) {
+				nextPlayer = checkNextPlayer();
+				centerCardAffected.setUsed();
+			}
+			if (centerCardAffected instanceof Reverse && !centerCardAffected.getUsed()) {
+				clockWiseDirection = !clockWiseDirection;
+				centerCardAffected.setUsed();
+			}
+			if (centerCardAffected instanceof WildCard || centerCardAffected instanceof DrawFour) {
+				centerCardAffected.setColorOfCard(bestColorOfComputerCard);
+				System.out.println("The color is now: " + bestColorOfComputerCard);
+			}
+		}
+	}
+
 }
