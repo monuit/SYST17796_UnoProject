@@ -1,10 +1,11 @@
 /**
  * SYST 17796 Project
+ *
  * @author Mohammad Abdulhussain
  * @date March 28, 2021
  */
 
-package Cards;
+package ca.sheridancollege.project.Cards;
 
 public class Card {
 
@@ -13,17 +14,16 @@ public class Card {
     //If the effect of the card was used
     private boolean wasCardUsed = false;
 
-    public Card(String color)
-    {
+    public Card(String color) {
         this.colorOfCard = color;
     }
 
-    public Card(){}
+    public Card() {
+    }
 
     //Sets the color of a card.
 
-    public void setColorOfCard(String colorOfCard)
-    {
+    public void setColorOfCard(String colorOfCard) {
         this.colorOfCard = colorOfCard;
     }
 
@@ -31,20 +31,17 @@ public class Card {
      * If card has a color this returns it.
      * Returns "none" if no color.
      */
-    public String getColorOfCard()
-    {
+    public String getColorOfCard() {
         return colorOfCard;
     }
 
     //Get if effect was used
-    public boolean getUsed()
-    {
+    public boolean getCardUsed() {
         return wasCardUsed;
     }
 
     //Set the effect to have been used
-    public void setUsed()
-    {
+    public void setCardUsed() {
         wasCardUsed = true;
     }
 

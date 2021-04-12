@@ -1,19 +1,21 @@
 /**
  * SYST 17796 Project
+ *
  * @author Mohammad Abdulhussain
  * @date March 28, 2021
  */
 
-package Cards;
+package ca.sheridancollege.project.Cards;
 
-public class DrawTwo extends Card{
+import ca.sheridancollege.project.CardHolds.Deck;
+
+public class DrawTwo extends Card {
 
 	public DrawTwo(String color) {
 		super(color);
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		return "A " + super.getColorOfCard() + " draw 2";
 	}
 }

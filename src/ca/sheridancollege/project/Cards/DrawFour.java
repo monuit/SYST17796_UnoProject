@@ -1,20 +1,19 @@
 /**
  * SYST 17796 Project
+ *
  * @author Mohammad Abdulhussain
  * @date March 28, 2021
  */
 
-package Cards;
+package ca.sheridancollege.project.Cards;
 
 public class DrawFour extends Card {
 
-	public DrawFour()
-	{
+	public DrawFour() {
 		super();
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		return "A draw four";
 	}
 }

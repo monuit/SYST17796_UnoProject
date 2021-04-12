@@ -1,17 +1,17 @@
 /**
  * SYST 17796 Project
+ *
  * @author Mohammad Abdulhussain
  * @date March 28, 2021
  */
 
-package Cards;
+package ca.sheridancollege.project.Cards;
 
-public class NumberCard extends Card{
+public class NumberCard extends Card {
 
 	private int numberOfCard;
 
-	public NumberCard(int number, String color)
-	{
+	public NumberCard(int number, String color) {
 		super(color);
 		this.numberOfCard = number;
 	}
@@ -19,13 +19,11 @@ public class NumberCard extends Card{
 	/**
 	 * Gets the number on this card
 	 */
-	public int getNumberOfCard()
-	{
+	public int getNumberOfCard() {
 		return numberOfCard;
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		return "A " + super.getColorOfCard() + " " + numberOfCard;
 	}
 }

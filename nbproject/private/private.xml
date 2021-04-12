@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/paulbonenfant/Documents/Teaching/SYST17796/Project/2020S/SYST17796_ProjectStarterCode/src/ca/sheridancollege/project/Game.java</file>
-            <file>file:/Users/paulbonenfant/Documents/Teaching/SYST17796/Project/2020S/SYST17796_ProjectStarterCode/src/ca/sheridancollege/project/GroupOfCards.java</file>
-            <file>file:/Users/paulbonenfant/Documents/Teaching/SYST17796/Project/2020S/SYST17796_ProjectStarterCode/src/ca/sheridancollege/project/Card.java</file>
-            <file>file:/Users/paulbonenfant/Documents/Teaching/SYST17796/Project/2020S/SYST17796_ProjectStarterCode/src/ca/sheridancollege/project/Player.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/Cards/Card.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/Cards/Reverse.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/RunGame/GameLogic.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/RunGame/RunUNOGame.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/CardHolds/Hand.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/Cards/DrawFour.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/Cards/Skip.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/CardHolds/Deck.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/Cards/DrawTwo.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/Cards/NumberCard.java</file>
+            <file>file:/C:/Users/Owner/SYST17796_UnoProject/src/ca/sheridancollege/project/Cards/WildCard.java</file>
         </group>
     </open-files>
 </project-private>
