@@ -78,7 +78,7 @@ public class Deck {
     public void buildDeck() {
         //Two cards of 0 - 9 for every color
         for (Colors colors : Arrays.asList(Colors.GREEN, Colors.BLUE, Colors.YELLOW, Colors.RED)) {
-            IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, colors.toString())));
+            IntStream.range(0, 9).forEach(i -> deck.add(new NumberCard(i, colors.toString())));
         }
         //Two Draw Two cards; two Skip cards; and two Reverse cards.
         for (int i = 0; i < 2; i++) {
