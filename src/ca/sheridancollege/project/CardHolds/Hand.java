@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import ca.sheridancollege.project.Cards.Card;
 
-
 public class Hand {
 
     private String name;

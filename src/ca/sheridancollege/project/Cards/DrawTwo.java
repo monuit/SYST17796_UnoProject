@@ -7,7 +7,6 @@
 
 package ca.sheridancollege.project.Cards;
 
-import ca.sheridancollege.project.CardHolds.Deck;
 
 public class DrawTwo extends Card {
 

@@ -34,6 +34,8 @@ public class Deck {
     /**
      * Picks a random integer and draws the card at that index from the deck
      * Returns that card and removes it from deck
+     *
+     * @return
      */
     public Card drawCard() {
         if (deck.size() < 1) {
@@ -85,16 +87,16 @@ public class Deck {
                 deck.add(new Reverse(colors.toString()));
                 deck.add(new Skip(Colors.GREEN.toString()));
             }
-
-            //In addition there are four Wild cards and four Wild Draw Four cards.
-            for (int i = 0; i < 4; i++) {
-                deck.add(new WildCard());
-            }
-            for (int i = 0; i < 4; i++) {
-                deck.add(new DrawFour());
-            }
         }
-
+        //In addition there are four Wild cards and four Wild Draw Four cards.
+        for (int i = 0; i < 4; i++) {
+            deck.add(new WildCard());
+        }
+        for (int i = 0; i < 4; i++) {
+            deck.add(new DrawFour());
+        }
     }
+
 }
+
 

@@ -5,14 +5,14 @@
  * @date March 28, 2021, @modified April 11, 2021
  */
 
-package ca.sheridancollege.project.RunGame;
+package RunGame;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-import ca.sheridancollege.project.CardHolds.Deck;
+import ca.sheridancollege.project.Deck;
 import ca.sheridancollege.project.CardHolds.Hand;
 import ca.sheridancollege.project.Cards.*;
 
@@ -37,8 +37,25 @@ public class GameLogic {
 
     public GameLogic() {
         firstDeck = new Deck();
-        computerOne = new Hand("Computer 1");
-        userPlayer = new Hand("The user");
+        computerOne = new Hand("Computer one");
+        BufferedReader userName = new BufferedReader(new InputStreamReader(System.in));
+        String userPlayerInput;
+        do {
+            System.out.println("Please enter a valid username by using only letters");
+            try {
+                String line = userName.readLine();
+                // Accept a line with alphabetic characters delimited with space.
+                if (line.matches("[A-Za-z ]+$")) {
+                    userPlayerInput = line;
+                    break;
+                }
+            } catch (IOException e) {
+                userPlayerInput = "";
+                e.printStackTrace();
+                break;
+            }
+        } while (true);
+        userPlayer = new Hand(userPlayerInput);
 
         userInput = new BufferedReader(new InputStreamReader(System.in));
 
@@ -46,12 +63,13 @@ public class GameLogic {
         StartGame();
     }
 
+
     // This will print if someone wins. It will get the game started with user playing first.
 
     private void StartGame() {
         try {
             userTurnToPlay();
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         for (String winner : Arrays.asList(winnerOfGame + " has won", "END")) {
@@ -65,7 +83,7 @@ public class GameLogic {
      *
      * @throws IOException
      */
-    private void userTurnToPlay() throws IOException {
+    private void userTurnToPlay() throws IOException, InterruptedException {
         if (centerCardAffected instanceof DrawFour && !centerCardAffected.getCardUsed()) {
             for (int i = 0; i < 4; i++) {
                 userPlayer.addToHand(firstDeck.drawCard());
@@ -114,7 +132,10 @@ public class GameLogic {
                 if (centerCardAffected instanceof WildCard || centerCardAffected instanceof DrawFour) {
                     System.out.println("Pick a color from: Yellow, Green, Blue, Red");
                     String newColorChosen = "Yellow";
-
+                    long startedInputTimer = System.currentTimeMillis();
+                    while (((System.currentTimeMillis() - startedInputTimer) < (60 * 1000)) && !userInput.ready()) {
+                        Thread.sleep(1200);
+                    }
                     if (userInput.ready()) {
                         newColorChosen = userInput.readLine();
                     } else {
@@ -128,6 +149,10 @@ public class GameLogic {
                             !newColorChosen.equalsIgnoreCase("Yellow")) {
                         do { // Makes sure color input is correct
                             System.out.println(newColorChosen + " is not a valid color!\nInput a new color:");
+                            startedInputTimer = System.currentTimeMillis();
+                            while (((System.currentTimeMillis() - startedInputTimer) < (60 * 1000)) && !userInput.ready()) {
+                                Thread.sleep(1200);
+                            }
                             if (userInput.ready()) {
                                 newColorChosen = userInput.readLine();
                             } else {
@@ -146,11 +171,11 @@ public class GameLogic {
                 }
 
                 // Special card impacts on the game
-                if (centerCardAffected instanceof Skip && !centerCardAffected.getCardUsed()) {
+                if ((centerCardAffected instanceof Skip) && !centerCardAffected.getCardUsed()) {
                     nextPlayer++;
                     centerCardAffected.setCardUsed();
                 }
-                if (centerCardAffected instanceof Reverse && !centerCardAffected.getCardUsed()) {
+                if ((centerCardAffected instanceof Reverse) && !centerCardAffected.getCardUsed()) {
                     clockWiseDirection = !clockWiseDirection;
                     centerCardAffected.setCardUsed();
                 }
@@ -204,7 +229,7 @@ public class GameLogic {
      * @return
      * @throws IOException
      */
-    private int askForUserInput() throws IOException {
+    private int askForUserInput() throws IOException, InterruptedException {
         System.out.println("\nIt is your turn\n" + userPlayer);
         System.out.println("***\n" +
                 "The center card is: " + centerCardAffected + "\n***");
@@ -217,13 +242,16 @@ public class GameLogic {
                 "Or type \"-2\" to quit the game");
 
         int indexOfCardInHand = 0;
-
+        long startedInput = System.currentTimeMillis();
+        while (((System.currentTimeMillis() - startedInput) < (60 * 1000)) && !userInput.ready()) {
+            Thread.sleep(1200);
+        }
         if (userInput.ready()) {
             indexOfCardInHand = Integer.parseInt(userInput.readLine());
         } else {
             System.out.println("Game Ended - Idle");
             userInput.close();
-            System.exit(0);
+            //System.exit(0);
         }
         System.out.println("Input: " + indexOfCardInHand);
         if (indexOfCardInHand <= userPlayer.getHandSize() && indexOfCardInHand > 0) {
@@ -255,7 +283,7 @@ public class GameLogic {
                 case 1:
                     try {
                         userTurnToPlay();
-                    } catch (IOException e) {
+                    } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
                     }
                     break;
