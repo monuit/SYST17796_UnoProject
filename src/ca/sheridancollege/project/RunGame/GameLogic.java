@@ -5,16 +5,15 @@
  * @date March 28, 2021, @modified April 11, 2021
  */
 
-package RunGame;
+package ca.sheridancollege.project.RunGame;
+
+import ca.sheridancollege.project.CardHolds.*;
+import ca.sheridancollege.project.Cards.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-
-import ca.sheridancollege.project.Deck;
-import ca.sheridancollege.project.CardHolds.Hand;
-import ca.sheridancollege.project.Cards.*;
 
 public class GameLogic {
 
@@ -206,16 +205,16 @@ public class GameLogic {
      */
     private boolean validUserInput(Hand player, int choice) {
         //Conditions to check for, otherwise returns false
-        boolean sameNum = (player.getCardIndex(choice).getNumberOfCard() == centerCardAffected.getNumberOfCard()) &&
+        boolean sameNumber = (player.getCardIndex(choice).getNumberOfCard() == centerCardAffected.getNumberOfCard()) &&
                 (centerCardAffected.getNumberOfCard() != 0);
         boolean sameColor = (player.getCardIndex(choice).getColorOfCard().equalsIgnoreCase(centerCardAffected.getColorOfCard())) &&
                 !(centerCardAffected.getColorOfCard().equals("none"));
-        boolean wild = (player.getCardIndex(choice) instanceof WildCard) || (player.getCardIndex(choice) instanceof DrawFour);
+        boolean wildCard = (player.getCardIndex(choice) instanceof WildCard) || (player.getCardIndex(choice) instanceof DrawFour);
         //DrawTwo or Skip or Reverse - Different Color
         boolean sameType = (player.getCardIndex(choice) instanceof DrawTwo && centerCardAffected instanceof DrawTwo) ||
                 (player.getCardIndex(choice) instanceof Skip && centerCardAffected instanceof Skip) ||
                 (player.getCardIndex(choice) instanceof Reverse && centerCardAffected instanceof Reverse);
-        if (sameNum || sameColor || wild || sameType) {
+        if (sameNumber || sameColor || wildCard || sameType) {
             return true;
         }
         //If this card couldn't be played ask for new input
@@ -242,8 +241,8 @@ public class GameLogic {
                 "Or type \"-2\" to quit the game");
 
         int indexOfCardInHand = 0;
-        long startedInput = System.currentTimeMillis();
-        while (((System.currentTimeMillis() - startedInput) < (60 * 1000)) && !userInput.ready()) {
+        long startedInputTimer = System.currentTimeMillis();
+        while (((System.currentTimeMillis() - startedInputTimer) < (60 * 1000)) && !userInput.ready()) {
             Thread.sleep(1200);
         }
         if (userInput.ready()) {
@@ -251,7 +250,7 @@ public class GameLogic {
         } else {
             System.out.println("Game Ended - Idle");
             userInput.close();
-            //System.exit(0);
+            System.exit(0);
         }
         System.out.println("Input: " + indexOfCardInHand);
         if (indexOfCardInHand <= userPlayer.getHandSize() && indexOfCardInHand > 0) {
@@ -268,7 +267,7 @@ public class GameLogic {
 
     // Lets the computers play and checks if it's won
 
-    private void computersPlay() {
+    private void computersPlay() throws IOException, InterruptedException {
         String compPlaying = null; //This is the computer playing at that moment
         // Chooses who gets to play next
         if (nextPlayer == 2) {
@@ -281,22 +280,14 @@ public class GameLogic {
             nextPlayer = checkNextPlayer();
             switch (nextPlayer) {
                 case 1:
-                    try {
-                        userTurnToPlay();
-                    } catch (IOException | InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    userTurnToPlay();
                     break;
                 default:
                     computersPlay();
                     break;
             }
         } else {
-            try {
-                userInput.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            userInput.close();
             winnerOfGame = compPlaying;
         }
 
@@ -496,4 +487,5 @@ public class GameLogic {
             player.addToHand(deckOfCards.drawCard());
         }
     }
+
 }
