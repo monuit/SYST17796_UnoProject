@@ -86,13 +86,15 @@ public class Deck {
                 deck.add(new Skip(Colors.GREEN.toString()));
             }
 
-        //In addition there are four Wild cards and four Wild Draw Four cards.
-        for (int i = 0; i < 4; i++) {
-            deck.add(new WildCard());
+            //In addition there are four Wild cards and four Wild Draw Four cards.
+            for (int i = 0; i < 4; i++) {
+                deck.add(new WildCard());
+            }
+            for (int i = 0; i < 4; i++) {
+                deck.add(new DrawFour());
+            }
         }
-        for (int i = 0; i < 4; i++) {
-            deck.add(new DrawFour());
-        }
-    }
 
+    }
 }
+
