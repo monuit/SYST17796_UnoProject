@@ -10,6 +10,7 @@
 package ca.sheridancollege.project.CardHolds;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -74,25 +75,16 @@ public class Deck {
 
     public void buildDeck() {
         //Two cards of 0 - 9 for every color
-        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.GREEN.toString())));
-        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.BLUE.toString())));
-        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.YELLOW.toString())));
-        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.RED.toString())));
+        for (Colors colors : Arrays.asList(Colors.GREEN, Colors.BLUE, Colors.YELLOW, Colors.RED)) {
+            IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, colors.toString())));
+        }
         //Two Draw Two cards; two Skip cards; and two Reverse cards.
         for (int i = 0; i < 2; i++) {
-            deck.add(new DrawTwo(Colors.GREEN.toString()));
-            deck.add(new DrawTwo(Colors.BLUE.toString()));
-            deck.add(new DrawTwo(Colors.YELLOW.toString()));
-            deck.add(new DrawTwo(Colors.RED.toString()));
-            deck.add(new Reverse(Colors.YELLOW.toString()));
-            deck.add(new Reverse(Colors.GREEN.toString()));
-            deck.add(new Reverse(Colors.RED.toString()));
-            deck.add(new Reverse(Colors.BLUE.toString()));
-            deck.add(new Skip(Colors.GREEN.toString()));
-            deck.add(new Skip(Colors.RED.toString()));
-            deck.add(new Skip(Colors.YELLOW.toString()));
-            deck.add(new Skip(Colors.BLUE.toString()));
-        }
+            for (Colors colors : Arrays.asList(Colors.GREEN, Colors.BLUE, Colors.YELLOW, Colors.RED)) {
+                deck.add(new DrawTwo(colors.toString()));
+                deck.add(new Reverse(colors.toString()));
+                deck.add(new Skip(Colors.GREEN.toString()));
+            }
 
         //In addition there are four Wild cards and four Wild Draw Four cards.
         for (int i = 0; i < 4; i++) {
