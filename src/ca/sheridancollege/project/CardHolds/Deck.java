@@ -2,29 +2,31 @@
  * SYST 17796 Project
  *
  * @author Mohammad Abdulhussain
- * @date March 28, 2021
+ * @date March 28, 2021, @modified April 11, 2021
  * Sheena Manuel
  * @date April 10, 2021
  */
 
-package CardHolds;
+package ca.sheridancollege.project.CardHolds;
+
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.stream.IntStream;
 
-import Cards.Card;
-import Cards.DrawFour;
-import Cards.DrawTwo;
-import Cards.NumberCard;
-import Cards.Reverse;
-import Cards.Skip;
-import Cards.WildCard;
+import ca.sheridancollege.project.Cards.Card;
+import ca.sheridancollege.project.Cards.DrawFour;
+import ca.sheridancollege.project.Cards.DrawTwo;
+import ca.sheridancollege.project.Cards.NumberCard;
+import ca.sheridancollege.project.Cards.Reverse;
+import ca.sheridancollege.project.Cards.Skip;
+import ca.sheridancollege.project.Cards.WildCard;
 
 public class Deck {
 
     private ArrayList<Card> deck;
 
     public Deck() {
-        deck = new ArrayList<Card>();
+        deck = new ArrayList<>();
         buildDeck();
     }
 
@@ -43,75 +45,55 @@ public class Deck {
         return temporary;
     }
 
-    /**
-     * Prints all cards available in deck at that time
-     */
+
+    // Prints all cards available in deck at that time
+
     public void printDeck() {
-        for (Card card : deck)
-        {
+        for (Card card : deck) {
             System.out.println(card);
         }
     }
 
-    /**
-     * Generates all cards needed for a full deck
-     */
+    // Create an enum with Colors
+    enum Colors {
+        GREEN("Green"), BLUE("Blue"), YELLOW("Yellow"), RED("Red");
+
+        public final String color;
+
+        Colors(String color) {
+            this.color = color;
+        }
+
+        @Override
+        public String toString() {
+            return this.color;
+        }
+    }
+
+    //Generates all cards needed for a full deck
+
     public void buildDeck() {
         //Two cards of 0 - 9 for every color
-        for(int i = 0; i < 10; i++)
-        {
-            deck.add(new NumberCard(i,"Green"));
-            deck.add(new NumberCard(i,"Green"));
-        }
-        for(int i = 0; i < 10; i++)
-        {
-            deck.add(new NumberCard(i,"Blue"));
-            deck.add(new NumberCard(i,"Blue"));
-        }
-        for(int i = 0; i < 10; i++)
-        {
-            deck.add(new NumberCard(i,"Yellow"));
-            deck.add(new NumberCard(i,"Yellow"));
-        }
-        for(int i = 0; i < 10; i++)
-        {
-            deck.add(new NumberCard(i,"Red"));
-            deck.add(new NumberCard(i,"Red"));
-        }
+        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.GREEN.toString())));
+        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.BLUE.toString())));
+        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.YELLOW.toString())));
+        IntStream.range(0, 10).forEach(i -> deck.add(new NumberCard(i, Colors.RED.toString())));
         //Two Draw Two cards; two Skip cards; and two Reverse cards.
         for (int i = 0; i < 2; i++) {
-            deck.add(new DrawTwo("Green"));
+            deck.add(new DrawTwo(Colors.GREEN.toString()));
+            deck.add(new DrawTwo(Colors.BLUE.toString()));
+            deck.add(new DrawTwo(Colors.YELLOW.toString()));
+            deck.add(new DrawTwo(Colors.RED.toString()));
+            deck.add(new Reverse(Colors.YELLOW.toString()));
+            deck.add(new Reverse(Colors.GREEN.toString()));
+            deck.add(new Reverse(Colors.RED.toString()));
+            deck.add(new Reverse(Colors.BLUE.toString()));
+            deck.add(new Skip(Colors.GREEN.toString()));
+            deck.add(new Skip(Colors.RED.toString()));
+            deck.add(new Skip(Colors.YELLOW.toString()));
+            deck.add(new Skip(Colors.BLUE.toString()));
         }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new DrawTwo("Blue"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new DrawTwo("Yellow"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new DrawTwo("Red"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new Reverse("Yellow"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new Reverse("Green"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new Reverse("Blue"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new Skip("Green"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new Skip("Red"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new Skip("Yellow"));
-        }
-        for (int i = 0; i < 2; i++) {
-            deck.add(new Skip("Blue"));
-        }
+
         //In addition there are four Wild cards and four Wild Draw Four cards.
         for (int i = 0; i < 4; i++) {
             deck.add(new WildCard());
@@ -120,4 +102,5 @@ public class Deck {
             deck.add(new DrawFour());
         }
     }
+
 }
