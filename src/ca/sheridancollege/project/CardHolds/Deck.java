@@ -7,7 +7,7 @@
  * @date April 10, 2021
  */
 
-package CardHolds;
+package ca.sheridancollege.project.CardHolds;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import ca.sheridancollege.project.Card;
+import ca.sheridancollege.project.Cards.Card;
 import ca.sheridancollege.project.Cards.DrawFour;
 import ca.sheridancollege.project.Cards.DrawTwo;
 import ca.sheridancollege.project.Cards.NumberCard;

@@ -5,7 +5,7 @@
  * @date March 28, 2021, @modified April 11, 2021
  */
 
-package CardHolds;
+package ca.sheridancollege.project.CardHolds;
 
 import java.util.ArrayList;
 

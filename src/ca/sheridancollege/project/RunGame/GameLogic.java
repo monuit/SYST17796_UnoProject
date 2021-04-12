@@ -7,6 +7,7 @@
 
 package ca.sheridancollege.project.RunGame;
 
+import ca.sheridancollege.project.CardHolds.Hand;
 import ca.sheridancollege.project.CardHolds.*;
 import ca.sheridancollege.project.Cards.*;
 
@@ -465,12 +466,22 @@ public class GameLogic {
      */
     private void randomColor() throws IllegalStateException {
 
-        String bestColor = switch ((int) (Math.random() * 4) + 1) {
-            case 1 -> "Blue";
-            case 2 -> "Red";
-            case 3 -> "Green";
-            case 4 -> "Yellow";
-            default -> throw new IllegalStateException("Unexpected value: " + (int) (Math.random() * 4) + 1);
+         String bestColor;
+        switch ((int) (Math.random() * 4) + 1) {
+            case 1:
+                bestColor = "Blue";
+                break;
+            case 2:
+                bestColor = "Red";
+                break;
+            case 3:
+                bestColor = "Green";
+                break;
+            case 4:
+                bestColor = "Yellow";
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + (int) (Math.random() * 4) + 1);
         };
 
         centerCardAffected.setColorOfCard(bestColor);
