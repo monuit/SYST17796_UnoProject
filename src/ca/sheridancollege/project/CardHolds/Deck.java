@@ -74,26 +74,6 @@ public class Deck {
         }
     }
 
-    //Generates all cards needed for a full deck
-
-    /** Testing for enum Points
-     *     enum Points {
-     *         ONE("1"), TWO("2"), THREE("3"), FOUR("4"), FIVE("5"), SIX("6"),
-     *         SEVEN("7"), EIGHT("8"), NINE("9"), TWENTY("20"), FIFTY("50");
-     *
-     *         public final String points;
-     *
-     *         Points(String point) {
-     *             this.points = point;
-     *         }
-     *
-     *         @Override
-     *         public String toString() {
-     *             return this.points;
-     *         }
-     *     }
-     */
-
 
     public void buildDeck() {
         //Two cards of 1 - 9 for every color
