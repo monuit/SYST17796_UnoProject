@@ -191,7 +191,7 @@ public class GameLogic {
                     } catch (IOException e) { // catches all errors not handled previously
                         e.printStackTrace();
                     }
-                    winnerOfGame = "The user";
+                    winnerOfGame = String.valueOf(userPlayer);
                 }
 
             }
